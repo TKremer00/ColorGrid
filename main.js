@@ -4,15 +4,27 @@ const colorDiv = document.querySelector("#colors");
 const colorCount = document.querySelector("#colorCount");
 const createGrid = document.querySelector("#create");
 const colorPickerDiv = document.querySelector("#colorDisplay");
+const errors = document.querySelector("#errors");
 
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext('2d');
 const margin = 30;
+const maxTrys = 10;
+let trys = 0;
 
 let colorGrid = []
 
 let colorChange = false;
-let colorArray = [];
+let colorArray = [
+        {hex:"#FF0000", rgb:hexToRgb("#FF0000"),}, 
+        {hex:"#00ff00", rgb:hexToRgb("#00ff00"),}, 
+        {hex:"#0000ff", rgb:hexToRgb("#0000ff"), },
+        {hex:"#000", rgb:hexToRgb("#000"),}, 
+        {hex:"#fff", rgb:hexToRgb("#fefefe"),}, 
+        {hex:"#800080", rgb:hexToRgb("#800080"),},
+        { hex:"#888808", rgb:hexToRgb("#888808"), },
+        { hex:"#FFC0CB", rgb:hexToRgb("#FFC0CB"), }
+    ];
 
 colorPicker.addEventListener("change", (event) => {
     colorChange = true;
@@ -54,6 +66,7 @@ createGrid.addEventListener("click", (event) => {
     if(colorArray.length > 5) {
         makeColorArray(8,6);
         drawGrid(8,6);
+        errors.innerHTML = "";
         console.log(colorGrid);
     }else {
         alert('Select at least 6 colors')
@@ -64,6 +77,7 @@ createGrid.addEventListener("click", (event) => {
 function makeColorArray(rows,columns) 
 {
     colorGrid = [];
+    let impossible = false;
     for (let i = 0; i < rows; i++) {
         let columnColors = [];
         for (let j = 0; j < columns; j++) {
@@ -76,23 +90,41 @@ function makeColorArray(rows,columns)
                 similar = false;
                 
                 // Check in 3x3 grid if similar
-                if((j != 0 && columnColors[j - 1] == colorToAdd) || 
-                   (i != 0 && j != 0 && colorGrid[i - 1][j - 1] == colorToAdd) ||
-                   (i != 0 && colorGrid[i - 1][j] == colorToAdd) ||
-                   (i != 0 && j + 1 < columns && colorGrid[i - 1][j + 1] == colorToAdd)) {
-                    
-                    colorToAdd = colorArray[Math.floor(Math.random() * colorArray.length)].hex;
-                    console.log("generate new color " + colorToAdd + " at " + i + " " + j);
+                if(j != 0 && columnColors[j - 1] === colorToAdd){                    
+                    similar = true;
+                }
+
+                if(i != 0 && j != 0 && colorGrid[i - 1][j - 1] === colorToAdd) {
+                    similar = true;
+                }
+
+                if(i != 0 && colorGrid[i - 1][j] === colorToAdd) {
+                    similar = true;
+                }
+
+                if(i != 0 && j + 1 < columns && colorGrid[i - 1][j + 1] === colorToAdd)
+                {
+                    similar = true;
                 }
                 
                 colorsChecked++;
                 
+                if(similar) {
+                    colorToAdd = colorArray[Math.floor(Math.random() * colorArray.length)].hex;
+                }
+
                 if(colorsChecked == colorArray.length && similar) {
                     similar = false;
-                    console.log("not possible i : " + i + " j : " + j,colorGrid, columnColors);
+                    impossible = true;
                 }
             }
             columnColors.push(colorToAdd);
+        }
+        if(impossible && trys < maxTrys) {
+            trys++;
+            console.log("niet goed");
+            
+            makeColorArray(rows,columns);
         }
         colorGrid.push(columnColors);
     }
