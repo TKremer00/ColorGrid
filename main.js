@@ -16,14 +16,14 @@ let colorGrid = []
 
 let colorChange = false;
 let colorArray = [
-        {hex:"#FF0000", rgb:hexToRgb("#FF0000"),}, 
+        /*{hex:"#FF0000", rgb:hexToRgb("#FF0000"),}, 
         {hex:"#00ff00", rgb:hexToRgb("#00ff00"),}, 
         {hex:"#0000ff", rgb:hexToRgb("#0000ff"), },
         {hex:"#000", rgb:hexToRgb("#000"),}, 
         {hex:"#fff", rgb:hexToRgb("#fefefe"),}, 
         {hex:"#800080", rgb:hexToRgb("#800080"),},
         { hex:"#888808", rgb:hexToRgb("#888808"), },
-        { hex:"#FFC0CB", rgb:hexToRgb("#FFC0CB"), }
+        { hex:"#FFC0CB", rgb:hexToRgb("#FFC0CB"), }*/
     ];
 
 colorPicker.addEventListener("change", (event) => {
