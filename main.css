@@ -1,0 +1,50 @@
+.colorShow {
+    width:20px;
+    height:20px;
+    margin-right: 5px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+#colors {
+    min-height: 50px;
+    margin-bottom: 50px;
+}
+
+#inputs input {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    vertical-align: top;
+}
+
+#colorDisplay {
+    width: 70px;
+    height: 36px;
+    display: inline-block;
+    border-color: #007bff;
+    border: 1px solid;
+    border-radius: .25rem;
+    vertical-align: top;
+    cursor: pointer;
+}
+
+#colorPicker {
+    display: none !important;
+}
