@@ -6,6 +6,11 @@
     vertical-align: top;
 }
 
+#errors {
+    display: none;
+    background-color: red;
+}
+
 #colors {
     min-height: 50px;
     margin-bottom: 50px;
@@ -34,6 +39,10 @@
     vertical-align: top;
 }
 
+#inputs input[type="number"] {
+    width: 47px;
+}
+
 #colorDisplay {
     width: 70px;
     height: 36px;
@@ -45,6 +54,15 @@
     cursor: pointer;
 }
 
+#colorDisplay p {
+    line-height: 5px;
+    text-align: center;
+}
+
 #colorPicker {
     display: none !important;
+}
+
+main {
+    margin-top: 50px;
 }

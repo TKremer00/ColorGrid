@@ -10,21 +10,26 @@
 </head>
 <body>
     <header>
+        <div id="errors">
+
+        </div>
         <div id="colors">
             <p id="colorCount">0 colors selected</p>
         </div>
     
         <!-- Add colors to array -->
         <div id="inputs">
-            <div id="colorDisplay"></div>
+            <div id="colorDisplay"><p>click</p></div>
             <input type="color" tabindex=-1 name="colorPicker" id="colorPicker">
-            <input type="button" value="Add color" id="add">
+            <input type="button" value="Add color" id="add"><br><br>
+            <input type="number" value="3" minlength="3" id="rows" title="rows">
+            <input type="number" value="3" minlength="3" id="columns" title="columns">
             <input type="button" value="Create grid" id="create">
         </div>
     </header>
     
     <main>
-        <canvas width="700" height="1000">
+        <canvas>
 
         </canvas>
     </main>
